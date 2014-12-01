@@ -16,8 +16,8 @@ import javax.swing.table.DefaultTableModel;
  * @author LUCHITO
  */
 public class DetallesPersonalForm extends javax.swing.JInternalFrame {
-    InterfaceDetallPersonal aO1= new DetallePersonalDAO();
-    ArrayList <InterfaceDetallePersonal> lista = new ArrayList<>();
+    InterfaceDetallePersonal aO1= new DetallePersonalDAO();
+    ArrayList <DetallPersonal> lista = new ArrayList<>();
     DefaultTableModel model;
     /**
      * Creates new form DetallesPersonalForm
