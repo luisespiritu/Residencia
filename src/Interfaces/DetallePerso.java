@@ -13,12 +13,12 @@ import java.util.ArrayList;
  *
  * @author LUCHITO
  */
-public interface DetallePersonal {
-     public ArrayList<DetallePersonal> listarDetalle();
-    public ArrayList<DetallePersonal> listarDetalle(int id);
+public interface DetallePerso {
+     public ArrayList<DetallePerso> listarDetalle();
+    public ArrayList<DetallePerso> listarDetalle(int id);
    
     public ArrayList<Padre> listarDetalle(String Detalle);
     
-    public boolean crearDetalle(DetallePersonal e);
+    public boolean crearDetalle(DetallePerso e);
     public boolean eliminarDetalle(int id);
 }

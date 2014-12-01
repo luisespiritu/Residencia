@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  * @author Kiefer
  */
 public class PadreDAO implements  Interfaces.InterfacePadre{
-     private Connection cx = null;//permite recibir la conexion
+    private Connection cx = null;//permite recibir la conexion
     private Statement st;//permite ejecutar la consulta
     private ResultSet rs;
 String sql;
