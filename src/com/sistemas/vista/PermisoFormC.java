@@ -423,13 +423,13 @@ public class PermisoFormC extends javax.swing.JInternalFrame {
         try{
             
           
-            idinter=Integer.parseInt(txtidinterno.getText());
-            idperson=Integer.parseInt(txtidpersonal.getText());
+           // idinter=Integer.parseInt(txtidinterno.getText());
+            //idperson=Integer.parseInt(txtidpersonal.getText());
             fechasalida = new SimpleDateFormat("YYYY-MM-dd  HH:mm:ss").format(jdcfechasalida.getDate());
             fecharetorno = new SimpleDateFormat("YYYY-MM-dd  HH:mm:ss").format(jdcfecharetorno.getDate());
             tipopermiso=cbopermiso.getSelectedItem().toString();
             lugar=txtlugar.getText();
-            p=new Permiso(idperson, idpad, idinter, idperson, fechasalida, fecharetorno, lugar, tipopermiso);
+            //p=new Permiso(idperson, idpad, idinter, idperson, fechasalida, fecharetorno, lugar, tipopermiso);
             op = ao.crearPermiso(p);
             limpiar();
         if(op){
