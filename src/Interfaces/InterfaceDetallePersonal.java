@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author LUCHITO
  */
-public interface DetallePersonal {
+public interface InterfaceDetallePersonal {
     public ArrayList<DetallPersonal> listarDetalle();
     public ArrayList<DetallPersonal> listarDetalle(int id);
    

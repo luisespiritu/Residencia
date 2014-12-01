@@ -6,7 +6,7 @@
 package com.sistemas.DAO;
 
 
-import Interfaces.DetallePersonal;
+import Interfaces.InterfaceDetallePersonal;
 import com.sistemas.DTO.DetallPersonal;
 import com.sistemas.DTO.Padre;
 import config.Conexion;
@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  *
  * @author LUCHITO
  */
-public class DetallePersonalDAO implements Interfaces.DetallePersonal {
+public class DetallePersonalDAO implements Interfaces.InterfaceDetallePersonal {
     private Connection cx = null;//permite recibir la conexion
     private Statement st;//permite ejecutar la consulta
     private ResultSet rs;
