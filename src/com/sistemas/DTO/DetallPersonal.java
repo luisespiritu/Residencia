@@ -11,15 +11,15 @@ package com.sistemas.DTO;
  */
 public class DetallPersonal {
     private int iddetallepersonal;
-    private int cantpagada;
+    private double cantipagada;
     private int descuento;
 
     public DetallPersonal() {
     }
 
-    public DetallPersonal(int iddetallepersonal, int cantpagada, int descuento) {
+    public DetallPersonal(int iddetallepersonal, double cantipagada, int descuento) {
         this.iddetallepersonal = iddetallepersonal;
-        this.cantpagada = cantpagada;
+        this.cantipagada = cantipagada;
         this.descuento = descuento;
     }
 
@@ -31,12 +31,12 @@ public class DetallPersonal {
         this.iddetallepersonal = iddetallepersonal;
     }
 
-    public int getCantpagada() {
-        return cantpagada;
+    public double getCantipagada() {
+        return cantipagada;
     }
 
-    public void setCantpagada(int cantpagada) {
-        this.cantpagada = cantpagada;
+    public void setCantipagada(double cantipagada) {
+        this.cantipagada = cantipagada;
     }
 
     public int getDescuento() {
@@ -48,3 +48,5 @@ public class DetallPersonal {
     }
     
 }
+   
+   

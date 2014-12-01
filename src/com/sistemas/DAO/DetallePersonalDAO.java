@@ -29,7 +29,24 @@ String sql;
 
     @Override
     public ArrayList<DetallPersonal> listarDetalle() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<DetallPersonal> lista=new ArrayList<>();
+        sql = "SELECT * FROM detalle_personal";
+        try {
+            cx = Conexion.getConex();
+            st = cx.createStatement();  
+            rs = st.executeQuery(sql);
+            while(rs.next()){
+              DetallPersonal detal = new  DetallPersonal ();
+                detal.setIddetallepersonal(rs.getInt("idDETALLE_PERSONAL"));
+                detal.setCantipagada(rs.getDouble("CANT_PAGADA"));
+                detal.setDescuento(rs.getInt("DESCUENTO"));
+              
+               lista.add(detal);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return lista;
     }
 
     @Override
