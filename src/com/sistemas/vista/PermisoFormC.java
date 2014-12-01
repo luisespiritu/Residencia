@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista;
+package com.sistemas.vista;
 
-import DaoPermiso.PermisoDAO;
-import DtoPermiso.Permiso;
+import com.sistemas.DAO.PermisoDAO;
+import com.sistemas.DTO.Permiso;
 import InterfacePermiso.InterfacePermiso;
 import java.awt.HeadlessException;
 import java.sql.Date;

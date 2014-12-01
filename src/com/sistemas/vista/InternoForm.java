@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista;
+package com.sistemas.vista;
 
 /**
  *
  * @author LUCHITO
  */
-public class UsuariosForm extends javax.swing.JInternalFrame {
+public class InternoForm extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form UsuariosForm
+     * Creates new form InternoForm
      */
-    public UsuariosForm() {
+    public InternoForm() {
         initComponents();
     }
 
@@ -31,11 +31,11 @@ public class UsuariosForm extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 647, Short.MAX_VALUE)
+            .addGap(0, 635, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 376, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
 
         pack();

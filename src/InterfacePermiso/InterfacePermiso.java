@@ -5,7 +5,7 @@
  */
 package InterfacePermiso;
 
-import DtoPermiso.Permiso;
+import com.sistemas.DTO.Permiso;
 import java.util.ArrayList;
 
 /**

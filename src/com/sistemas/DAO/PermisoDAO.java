@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DaoPermiso;
+package com.sistemas.DAO;
 
-import DtoPermiso.Permiso;
+import com.sistemas.DTO.Permiso;
 import InterfacePermiso.InterfacePermiso;
 import config.Conexion;
 import java.sql.Connection;
