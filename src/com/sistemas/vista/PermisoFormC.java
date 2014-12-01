@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
  * @author LUCHITO
  */
 public class PermisoFormC extends javax.swing.JInternalFrame {
+    
     InterfacePermiso ao = new PermisoDAO();
     ArrayList<Permiso> lista = new ArrayList<>();
     DefaultTableModel model;
@@ -420,7 +421,8 @@ public class PermisoFormC extends javax.swing.JInternalFrame {
         String fechasalida,fecharetorno;
         boolean op;
         try{
-            idpad=Integer.parseInt(txtidpadre.getText());
+            idpad = aO.listarEAP(cboidpad.getSelectedItem().toString());
+          
             idinter=Integer.parseInt(txtidinterno.getText());
             idperson=Integer.parseInt(txtidpersonal.getText());
             fechasalida = new SimpleDateFormat("YYYY-MM-dd  HH:mm:ss").format(jdcfechasalida.getDate());
