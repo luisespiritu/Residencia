@@ -5,7 +5,8 @@
  */
 package com.sistemas.DAO;
 
-import Interfaces.DetallePerso;
+
+import Interfaces.DetallePersonal;
 import com.sistemas.DTO.Padre;
 import config.Conexion;
 import java.sql.Connection;
@@ -19,51 +20,29 @@ import javax.swing.JOptionPane;
  *
  * @author LUCHITO
  */
-public class DetallePersonalDAO implements Interfaces.DetallePerso {
+public class DetallePersonalDAO implements Interfaces.DetallePersonal {
     private Connection cx = null;//permite recibir la conexion
     private Statement st;//permite ejecutar la consulta
     private ResultSet rs;
 String sql;
 
     @Override
-    public ArrayList<DetallePerso> listarDetalle() {
-         ArrayList<DetallePerso> lista=new ArrayList<>();
-        sql = "SELECT * FROM detalle_personal";
-        try {
-            cx = Conexion.getConex();
-            st = cx.createStatement();  
-            rs = st.executeQuery(sql);
-            while(rs.next()){
-              Padre padre = new Padre();
-                padre.setIdpadre(rs.getInt("idPADRE"));
-                padre.setNombres(rs.getNString("NOMBRE"));
-                padre.setApellidos(rs.getString("APELLIDOS"));
-               padre.setNcelular(rs.getString("TELEFONO"));
-               
-                lista.add(padre);
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-        return lista;
-        
-        
-        
-        
-    }
-
-    @Override
-    public ArrayList<DetallePerso> listarDetalle(int id) {
+    public ArrayList<DetallePersonal> listarDetalle() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList<Padre> listarDetalle(String Detalle) {
+    public ArrayList<DetallePersonal> listarDetalle(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean crearDetalle(DetallePerso e) {
+    public ArrayList<DetallePersonal> listarDetallePersonal(String Detalle) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean crearDetalle(DetallePersonal e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -71,5 +50,7 @@ String sql;
     public boolean eliminarDetalle(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
     
 }
