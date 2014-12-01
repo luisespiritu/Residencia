@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6e89bfdb-919a-4e6e-84b6-d4a7fd631e59">
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     permiso.`idPERMISO` AS permiso_idPERMISO,
+     permiso.`idPADRE` AS permiso_idPADRE,
+     permiso.`idINTERNO` AS permiso_idINTERNO,
+     permiso.`idPERSONAL` AS permiso_idPERSONAL,
+     permiso.`FECHA_SALIDA` AS permiso_FECHA_SALIDA,
+     permiso.`HORA_SALIDA` AS permiso_HORA_SALIDA,
+     permiso.`TIPO` AS permiso_TIPO,
+     permiso.`LUGAR` AS permiso_LUGAR,
+     permiso.`FECHA_RETORNO` AS permiso_FECHA_RETORNO,
+     permiso.`HORA_RETORNO` AS permiso_HORA_RETORNO
+FROM
+     `permiso` permiso]]>
+	</queryString>
+	<field name="permiso_idPERMISO" class="java.lang.Long"/>
+	<field name="permiso_idPADRE" class="java.lang.Long"/>
+	<field name="permiso_idINTERNO" class="java.lang.Long"/>
+	<field name="permiso_idPERSONAL" class="java.lang.Long"/>
+	<field name="permiso_FECHA_SALIDA" class="java.sql.Date"/>
+	<field name="permiso_HORA_SALIDA" class="java.lang.String"/>
+	<field name="permiso_TIPO" class="java.lang.String"/>
+	<field name="permiso_LUGAR" class="java.lang.String"/>
+	<field name="permiso_FECHA_RETORNO" class="java.sql.Date"/>
+	<field name="permiso_HORA_RETORNO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
