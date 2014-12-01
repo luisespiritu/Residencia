@@ -7,7 +7,7 @@ package com.sistemas.vista;
 
 import com.sistemas.DAO.PermisoDAO;
 import com.sistemas.DTO.Permiso;
-import InterfacePermiso.InterfacePermiso;
+import Interfaces.InterfacePermiso;
 import java.awt.HeadlessException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;

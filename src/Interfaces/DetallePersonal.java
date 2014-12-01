@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InterfacePermiso;
+package Interfaces;
 
-import com.sistemas.DTO.DetallePersonal;
+
 import com.sistemas.DTO.Padre;
 import java.util.ArrayList;
 
@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author LUCHITO
  */
-public interface DetallePersonalForm {
+public interface DetallePersonal {
      public ArrayList<DetallePersonal> listarDetalle();
     public ArrayList<DetallePersonal> listarDetalle(int id);
    

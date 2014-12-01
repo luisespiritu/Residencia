@@ -6,7 +6,7 @@
 
 package com.sistemas.vista;
 
-import InterfacePermiso.InterfacePadre;
+import Interfaces.InterfacePadre;
 import com.sistemas.DAO.PadreDAO;
 import com.sistemas.DTO.Padre;
 import java.text.SimpleDateFormat;

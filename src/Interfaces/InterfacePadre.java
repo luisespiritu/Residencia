@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package InterfacePermiso;
+package Interfaces;
 
 
 import com.sistemas.DTO.Padre;

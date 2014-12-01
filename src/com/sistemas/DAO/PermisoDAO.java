@@ -6,7 +6,7 @@
 package com.sistemas.DAO;
 
 import com.sistemas.DTO.Permiso;
-import InterfacePermiso.InterfacePermiso;
+import Interfaces.InterfacePermiso;
 import config.Conexion;
 import java.sql.Connection;
 import java.sql.ResultSet;

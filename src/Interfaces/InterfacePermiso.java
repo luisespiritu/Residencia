@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InterfacePermiso;
+package Interfaces;
 
 import com.sistemas.DTO.Permiso;
 import java.util.ArrayList;
