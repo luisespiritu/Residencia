@@ -421,7 +421,7 @@ public class PermisoFormC extends javax.swing.JInternalFrame {
         String fechasalida,fecharetorno;
         boolean op;
         try{
-            idpad = aO.listarEAP(cboidpad.getSelectedItem().toString());
+            
           
             idinter=Integer.parseInt(txtidinterno.getText());
             idperson=Integer.parseInt(txtidpersonal.getText());
