@@ -6,6 +6,7 @@
 package Interfaces;
 
 
+import com.sistemas.DTO.DetallPersonal;
 import java.util.ArrayList;
 
 /**
@@ -13,11 +14,11 @@ import java.util.ArrayList;
  * @author LUCHITO
  */
 public interface DetallePersonal {
-    public ArrayList<DetallePersonal> listarDetalle();
-    public ArrayList<DetallePersonal> listarDetalle(int id);
+    public ArrayList<DetallPersonal> listarDetalle();
+    public ArrayList<DetallPersonal> listarDetalle(int id);
    
-    public ArrayList<DetallePersonal> listarDetallePersonal(String Detalle);
+    public ArrayList<DetallPersonal> listarDetallePersonal(String Detalle);
     
-    public boolean crearDetalle(DetallePersonal e);
+    public boolean crearDetalle(DetallPersonal e);
     public boolean eliminarDetalle(int id);
 }

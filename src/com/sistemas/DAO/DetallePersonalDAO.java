@@ -7,6 +7,7 @@ package com.sistemas.DAO;
 
 
 import Interfaces.DetallePersonal;
+import com.sistemas.DTO.DetallPersonal;
 import com.sistemas.DTO.Padre;
 import config.Conexion;
 import java.sql.Connection;
@@ -27,22 +28,22 @@ public class DetallePersonalDAO implements Interfaces.DetallePersonal {
 String sql;
 
     @Override
-    public ArrayList<DetallePersonal> listarDetalle() {
+    public ArrayList<DetallPersonal> listarDetalle() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList<DetallePersonal> listarDetalle(int id) {
+    public ArrayList<DetallPersonal> listarDetalle(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList<DetallePersonal> listarDetallePersonal(String Detalle) {
+    public ArrayList<DetallPersonal> listarDetallePersonal(String Detalle) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean crearDetalle(DetallePersonal e) {
+    public boolean crearDetalle(DetallPersonal e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -51,6 +52,6 @@ String sql;
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-
+    
     
 }
