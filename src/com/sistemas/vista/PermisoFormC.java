@@ -415,7 +415,7 @@ public class PermisoFormC extends javax.swing.JInternalFrame {
 
     private void btnagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarActionPerformed
         // TODO add your handling code here:
-        Permiso p;
+        /*Permiso p;
         String lugar,tipopermiso;
         int idpad,idinter,idperson;
         String fechasalida,fecharetorno;
@@ -430,7 +430,7 @@ public class PermisoFormC extends javax.swing.JInternalFrame {
             tipopermiso=cbopermiso.getSelectedItem().toString();
             lugar=txtlugar.getText();
             //p=new Permiso(idperson, idpad, idinter, idperson, fechasalida, fecharetorno, lugar, tipopermiso);
-            op = ao.crearPermiso(p);
+            //op = ao.crearPermiso(p);
             limpiar();
         if(op){
             JOptionPane.showMessageDialog(null, "Registro Guardado!!");             
@@ -442,7 +442,7 @@ public class PermisoFormC extends javax.swing.JInternalFrame {
         }catch (NumberFormatException | HeadlessException e){
             JOptionPane.showMessageDialog(null, "Ingresar datos");
             
-        }
+        }*/
     }//GEN-LAST:event_btnagregarActionPerformed
 
     private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
