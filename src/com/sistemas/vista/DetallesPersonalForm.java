@@ -174,7 +174,7 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "N°", "ID_DETALLE", "CANTIDAD", "DESCUENTO"
+                "N°", "ID_DETALLE", "CANTIDAD", "DESCUENTO (%)"
             }
         ));
         jScrollPane2.setViewportView(tblista);
