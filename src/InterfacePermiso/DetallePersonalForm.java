@@ -17,7 +17,7 @@ public interface DetallePersonalForm {
      public ArrayList<DetallePersonal> listarDetalle();
     public ArrayList<DetallePersonal> listarDetalle(int id);
    
-    public ArrayList<Padre> listarDetallePersonal(String Detalle);
+    public ArrayList<Padre> listarDetalle(String Detalle);
     
     public boolean crearDetalle(DetallePersonal e);
     public boolean eliminarDetalle(int id);
