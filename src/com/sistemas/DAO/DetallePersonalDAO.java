@@ -25,7 +25,7 @@ public class DetallePersonalDAO implements InterfacesPermiso.InterfaceDetallePer
     private Connection cx = null;//permite recibir la conexion
     private Statement st;//permite ejecutar la consulta
     private ResultSet rs;
-String sql;
+    String sql;
 
     @Override
     public ArrayList<DPersonal> listarDetalle() {
@@ -83,7 +83,7 @@ String sql;
         boolean op=false;
         sql="INSERT INTO detalle_personal(idDETALLE_PERSONAL, CANT_PAGADA, DESCUENTO) VALUES(null,"
                 +det.getIddetallperson()+", '"
-                +det.getCantip()+"', '"
+                +det.getCantip()+", '"
                 +det.getDesc()+"')";
            
          try {
