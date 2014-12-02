@@ -46,7 +46,7 @@ public class DPersonal {
     public void setDescuento(int descuento) {
         this.descuento = descuento;
     }
-    
+
+   
+
 }
-   
-   
