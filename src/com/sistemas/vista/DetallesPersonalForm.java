@@ -23,7 +23,7 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
     ArrayList <DPersonal> lista = new ArrayList<>();
     DefaultTableModel model;
     DPersonal det;
-   int idp=0;
+   
     /**
      * Creates new form DetallesPersonalForm
      */
@@ -263,7 +263,7 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
            
             cantip=Double.parseDouble(txtcantidad1.getText());
             desc=Integer.parseInt( txtdescuento.getText());
-            det=new DPersonal(idp, cantip, desc);
+            det=new DPersonal( cantip, desc);
             op=adp.crearDetalle(det);
             limpiarComponentes();
             if(op){
