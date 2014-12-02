@@ -85,6 +85,7 @@ String sql;
                 +e.getIddetallepersonal()+",'"
                 +e.getCantipagada()+"','"
                 +e.getDescuento()+",'";
+           System.out.println(sql);
          try {
             cx = Conexion.getConex();
             st = cx.createStatement();
