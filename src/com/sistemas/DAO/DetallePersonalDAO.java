@@ -37,9 +37,9 @@ String sql;
             rs = st.executeQuery(sql);
             while(rs.next()){
               DPersonal detal = new  DPersonal ();
-                detal.setIddetallepersonal(rs.getInt("idDETALLE_PERSONAL"));
-                detal.setCantipagada(rs.getDouble("CANT_PAGADA"));
-                detal.setDescuento(rs.getInt("DESCUENTO"));
+                detal.setIddetallperson(rs.getInt("idDETALLE_PERSONAL"));
+                detal.setCantip(rs.getDouble("CANT_PAGADA"));
+                detal.setDesc(rs.getInt("DESCUENTO"));
               
                lista.add(detal);
             }
@@ -60,9 +60,9 @@ String sql;
             rs = st.executeQuery(sql);
             while(rs.next()){
               DPersonal detal = new  DPersonal ();
-                detal.setIddetallepersonal(rs.getInt("idDETALLE_PERSONAL"));
-                detal.setCantipagada(rs.getDouble("CANT_PAGADA"));
-                detal.setDescuento(rs.getInt("DESCUENTO"));
+                detal.setIddetallperson(rs.getInt("idDETALLE_PERSONAL"));
+                detal.setCantip(rs.getDouble("CANT_PAGADA"));
+                detal.setDesc(rs.getInt("DESCUENTO"));
               
                lista.add(detal);
             }
@@ -82,9 +82,9 @@ String sql;
     public boolean crearDetalle(DPersonal e) {
         boolean op=false;
         sql="INSERT INTO detalle_personal(idDETALLE_PERSONAL, CANT_PAGADA, DESCUENTO) VALUES(null,"
-                +e.getIddetallepersonal()+", '"
-                +e.getCantipagada()+"', '"
-                +e.getDescuento()+"')";
+                +e.getIddetallperson()+", '"
+                +e.getCantip()+"', '"
+                +e.getDesc()+"')";
            
          try {
             cx = Conexion.getConex();

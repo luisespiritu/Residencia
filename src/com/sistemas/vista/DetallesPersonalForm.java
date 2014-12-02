@@ -257,14 +257,14 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
 
     private void btnagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarActionPerformed
         // TODO add your handling code here:
-        double cantipagada;
-        int descuento;
+        double cantip;
+        int desc;
         boolean op;
         try{
            
-            cantipagada=Double.parseDouble(txtcantidad1.getText());
-            descuento=Integer.parseInt( txtdescuento.getText());
-            det=new DPersonal(idp, cantipagada, descuento);
+            cantip=Double.parseDouble(txtcantidad1.getText());
+            desc=Integer.parseInt( txtdescuento.getText());
+            det=new DPersonal(idp, cantip, desc);
             op=adp.crearDetalle(det);
             limpiarComponentes();
             if(op){
@@ -317,9 +317,9 @@ void cargarTabla(){
     Object[] datos = new Object[4];
     for(int i=0;i<lista.size();i++){
         datos[0]=i+1;
-        datos[1]=lista.get(i).getIddetallepersonal();
-        datos[2]=lista.get(i).getCantipagada();
-        datos[3]=lista.get(i).getDescuento();
+        datos[1]=lista.get(i).getIddetallperson();
+        datos[2]=lista.get(i).getCantip();
+        datos[3]=lista.get(i).getDesc();
         
      model.addRow(datos);
     }

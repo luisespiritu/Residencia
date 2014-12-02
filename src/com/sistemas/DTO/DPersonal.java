@@ -10,43 +10,44 @@ package com.sistemas.DTO;
  * @author LUCHITO
  */
 public class DPersonal {
-    private int iddetallepersonal;
-    private double cantipagada;
-    private int descuento;
+    private int iddetallperson;
+    private double cantip;
+    private int desc;
 
     public DPersonal() {
     }
 
-    public DPersonal(int iddetallepersonal, double cantipagada, int descuento) {
-        this.iddetallepersonal = iddetallepersonal;
-        this.cantipagada = cantipagada;
-        this.descuento = descuento;
+    public DPersonal(int iddetallperson, double cantip, int desc) {
+        this.iddetallperson = iddetallperson;
+        this.cantip = cantip;
+        this.desc = desc;
     }
 
-    public int getIddetallepersonal() {
-        return iddetallepersonal;
+    public int getIddetallperson() {
+        return iddetallperson;
     }
 
-    public void setIddetallepersonal(int iddetallepersonal) {
-        this.iddetallepersonal = iddetallepersonal;
+    public void setIddetallperson(int iddetallperson) {
+        this.iddetallperson = iddetallperson;
     }
 
-    public double getCantipagada() {
-        return cantipagada;
+    public double getCantip() {
+        return cantip;
     }
 
-    public void setCantipagada(double cantipagada) {
-        this.cantipagada = cantipagada;
+    public void setCantip(double cantip) {
+        this.cantip = cantip;
     }
 
-    public int getDescuento() {
-        return descuento;
+    public int getDesc() {
+        return desc;
     }
 
-    public void setDescuento(int descuento) {
-        this.descuento = descuento;
+    public void setDesc(int desc) {
+        this.desc = desc;
     }
 
    
+    }
 
-}
+    
