@@ -22,7 +22,7 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
     InterfaceDetallePersonal adp= new DetallePersonalDAO();
     ArrayList <DPersonal> lista = new ArrayList<>();
     DefaultTableModel model;
-    
+     DPersonal det=new DPersonal();
    
     /**
      * Creates new form DetallesPersonalForm
@@ -262,7 +262,7 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
 
     private void btnagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarActionPerformed
         // TODO add your handling code here:
-        DPersonal det;
+      
         double cantip;
         int desc; boolean op;
         try{
