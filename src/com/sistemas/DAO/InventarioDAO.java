@@ -6,6 +6,7 @@
 
 package com.sistemas.DAO;
 
+import InterfacesPermiso.InterfacePermiso;
 import com.sistemas.DTO.Inventario;
 
 import config.Conexion;
@@ -20,7 +21,7 @@ import javax.swing.JOptionPane;
  *
  * @author Kiefer
  */
-public class InventarioDAO implements InterfacePermiso.InterfaceInventario{
+public class InventarioDAO implements InterfacesPermiso.InterfaceInventario{
  private Connection cx = null;//permite recibir la conexion
     private Statement st;//permite ejecutar la consulta
     private ResultSet rs;
