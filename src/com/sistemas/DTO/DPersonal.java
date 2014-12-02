@@ -17,10 +17,9 @@ public class DPersonal {
     public DPersonal() {
     }
 
-    public DPersonal(int iddetallperson, double cantip, int desc) {
-        this.iddetallperson = iddetallperson;
-        this.cantip = cantip;
-        this.desc = desc;
+    public DPersonal( double cantip, int desc) {
+       this.cantip = cantip;
+       this.desc = desc;
     }
 
     public int getIddetallperson() {
