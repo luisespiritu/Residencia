@@ -352,7 +352,7 @@ void updateComponets(){
 void limpiar(){
    cboidinter.setSelectedIndex(0);
     txtcantpag.setText(null);
-    dtfecha.setDate(null);
+    //dtfecha.setDate(null);
     txtmotivo.setText(null);
 }
 void limpiarTabla0(DefaultTableModel model){
