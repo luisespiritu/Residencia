@@ -275,7 +275,7 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Registro no Guardado");
             }
         }catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e+"HOLA");
+            JOptionPane.showMessageDialog(null, "Inserte Datos");
             
         }
         
