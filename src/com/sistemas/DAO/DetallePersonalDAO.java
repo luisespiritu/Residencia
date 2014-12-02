@@ -80,7 +80,7 @@ String sql;
 
     @Override
     public int crearDetalle(DPersonal e) {
-                int op=0;
+        int op=0;
         sql="INSERT INTO detalle_personal(idDETALLE_PERSONAL,CANT_PAGADA,DESCUENTO) VALUES(null,"
                 +e.getIddetallepersonal()+",'"
                 +e.getCantipagada()+"','"
