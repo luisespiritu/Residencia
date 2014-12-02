@@ -151,6 +151,11 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
         });
 
         btnnuevo.setText("Nuevo");
+        btnnuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnuevoActionPerformed(evt);
+            }
+        });
 
         btnsalir.setText("Salir");
         btnsalir.addActionListener(new java.awt.event.ActionListener() {
@@ -265,7 +270,7 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
             desc=Integer.parseInt( txtdescuento.getText());
             det=new DPersonal( cantip, desc);
             op=adp.crearDetalle(det);
-            limpiarComponentes();
+            limpiarComponentes10();
             if(op){
                 JOptionPane.showMessageDialog(null, "Registro Guardado");
                 LimpiarJTable();
@@ -309,6 +314,11 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_btneliminarActionPerformed
+
+    private void btnnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevoActionPerformed
+        // TODO add your handling code here:
+        limpiarComponentes10();
+    }//GEN-LAST:event_btnnuevoActionPerformed
 void cargarTabla(){
     
     lista = adp.listarDetalle();
@@ -324,7 +334,7 @@ void cargarTabla(){
     }
      tblista.setModel(model);    
 }
- void limpiarComponentes(){
+ void limpiarComponentes10(){
    
     txtcantidad1.setText(null);
     txtdescuento.setText(null);

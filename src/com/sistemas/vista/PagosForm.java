@@ -288,12 +288,12 @@ public class PagosForm extends javax.swing.JInternalFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-        Pagos p;
+        /*Pagos p;
         String motivo, fecha;
         double cantpag;
         boolean op;
         try{
-            //idinter=aO.listarInternos(cboidinter.getSelectedItem().toString());
+            idinter=aO.listarInternos(cboidinter.getSelectedItem().toString());
             cantpag=Integer.parseInt(txtcantpag.getText());
             fecha = new SimpleDateFormat("YYYY-MM-dd").format(dtfecha.getDate());
             motivo =txtmotivo.getText();
@@ -311,7 +311,7 @@ public class PagosForm extends javax.swing.JInternalFrame {
         }
        
         
-    
+    */
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
