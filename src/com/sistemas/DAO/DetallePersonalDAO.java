@@ -79,7 +79,20 @@ String sql;
 
     @Override
     public boolean crearDetalle(DetallPersonal e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean op=false;
+        sql="INSERT INTO detalle_personal(idDETALLE_PERSONAL,CANT_PAGADA,DESCUENTO) VALUES(null,"
+                +e.getIddetallepersonal()+",'"
+                +e.getCantipagada()+"','"
+                +e.getDescuento()+",'";
+         try {
+            cx = Conexion.getConex();
+            st = cx.createStatement();
+            st.executeUpdate(sql);
+            op = true;
+        } catch (SQLException ex) {
+        
+        }
+       return op;
     }
 
     @Override
