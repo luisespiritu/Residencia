@@ -259,7 +259,7 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         double cantipagada;
         int descuento;
-        int op;
+        boolean op;
         try{
            
             cantipagada=Double.parseDouble(txtcantidad1.getText());
@@ -267,7 +267,7 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
             det=new DPersonal(idp, cantipagada, descuento);
             op=adp.crearDetalle(det);
             limpiarComponentes();
-            if(op==1){
+            if(op){
                 JOptionPane.showMessageDialog(null, "Registro Guardado");
                 LimpiarJTable();
                 cargarTabla();
@@ -294,8 +294,8 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
         if(tblista.getSelectedRow()>=0){
             int fila = tblista.getSelectedRow();
             int id = (int) tblista.getValueAt(fila, 1);
-             int op = adp.eliminarDetalle(id);
-            if(op==1){
+            boolean op = adp.eliminarDetalle(id);
+            if(op){
                 JOptionPane.showMessageDialog(null, "Registro Eliminado");
                 LimpiarJTable();
                 cargarTabla();

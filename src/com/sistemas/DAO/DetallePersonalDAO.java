@@ -79,35 +79,35 @@ String sql;
     }
 
     @Override
-    public int crearDetalle(DPersonal e) {
-        int op=0;
+    public boolean crearDetalle(DPersonal e) {
+        boolean op=false;
         sql="INSERT INTO detalle_personal(idDETALLE_PERSONAL,CANT_PAGADA,DESCUENTO) VALUES(null,"
                 +e.getIddetallepersonal()+",'"
                 +e.getCantipagada()+"','"
                 +e.getDescuento()+",'";
-           System.out.println(sql);
+           
          try {
             cx = Conexion.getConex();
             st = cx.createStatement();
             st.executeUpdate(sql);
-            
+            op=true;
         } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, e+"Luchito");
+        JOptionPane.showMessageDialog(null, e+"Datos no creados");
         }
        return op;
 
     }
 
     @Override
-    public int eliminarDetalle(int id) {
-              int op=0;
+    public boolean eliminarDetalle(int id) {
+              boolean op=false;
         sql ="DELETE FROM detalle_personal WHERE idDETALLE_PERSONAL="+id;
         
         try {
             cx = Conexion.getConex();
             st = cx.createStatement();
             st.executeUpdate(sql);
-           
+           op=true;
         } catch (SQLException ex) {
         }finally{
             try {
