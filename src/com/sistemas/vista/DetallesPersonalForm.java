@@ -5,7 +5,7 @@
  */
 package com.sistemas.vista;
 
-import Interfaces.InterfaceDetallePersonal;
+import InterfacesPermiso.InterfaceDetallePersonal;
 
 import com.sistemas.DAO.DetallePersonalDAO;
 import com.sistemas.DTO.DPersonal;

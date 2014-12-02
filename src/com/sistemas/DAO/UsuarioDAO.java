@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  *
  * @author Kiefer
  */
-public class UsuarioDAO implements Interfaces.InterfaceUsuario{
+public class UsuarioDAO implements InterfacesPermiso.InterfaceUsuario{
      private Connection cx = null;//permite recibir la conexion
     private Statement st;//permite ejecutar la consulta
     private ResultSet rs;

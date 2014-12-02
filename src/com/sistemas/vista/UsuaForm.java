@@ -6,7 +6,7 @@
 
 package com.sistemas.vista;
 
-import Interfaces.InterfaceUsuario;
+import InterfacesPermiso.InterfaceUsuario;
 import com.sistemas.DAO.UsuarioDAO;
 import com.sistemas.DTO.Padre;
 import com.sistemas.DTO.Usuario;

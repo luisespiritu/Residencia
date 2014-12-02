@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 
-package InterfacePermiso;
+package InterfacesPermiso;
+
 
 import com.sistemas.DTO.Inventario;
 
