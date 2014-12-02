@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  * @author LUCHITO
  */
 public class DetallesPersonalForm extends javax.swing.JInternalFrame {
-    InterfaceDetallePersonal aO1= new DetallePersonalDAO();
+    InterfaceDetallePersonal adp= new DetallePersonalDAO();
     ArrayList <DetallPersonal> lista = new ArrayList<>();
     DefaultTableModel model;
     /**
@@ -241,7 +241,7 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnagregarActionPerformed
 void cargarTabla(){
     
-    lista = aO1.listarDetalle();
+    lista = adp.listarDetalle();
     model = (DefaultTableModel) tblista.getModel();
     Object[] datos = new Object[4];
     for(int i=0;i<lista.size();i++){
