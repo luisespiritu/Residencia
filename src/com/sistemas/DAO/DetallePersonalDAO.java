@@ -81,7 +81,7 @@ String sql;
     @Override
     public boolean crearDetalle(DPersonal e) {
         boolean op=false;
-        sql="INSERT INTO detalle_personal(idDETALLE_PERSONAL,CANT_PAGADA,DESCUENTO) VALUES(null,"
+        sql="INSERT INTO detalle_personal(idDETALLE_PERSONAL, CANT_PAGADA, DESCUENTO) VALUES(null,"
                 +e.getIddetallepersonal()+",'"
                 +e.getCantipagada()+"','"
                 +e.getDescuento()+",'";
