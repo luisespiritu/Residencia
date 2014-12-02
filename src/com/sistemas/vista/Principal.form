@@ -90,6 +90,9 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu6">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/Modify.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Registros"/>
           </Properties>
           <SubComponents>
@@ -130,6 +133,9 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu7">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/Loading.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Detalles Personal"/>
           </Properties>
           <SubComponents>
@@ -137,9 +143,6 @@
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+D"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/Back.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Personal"/>
               </Properties>
@@ -151,6 +154,9 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu8">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/Profile.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Internos.R"/>
           </Properties>
           <SubComponents>
