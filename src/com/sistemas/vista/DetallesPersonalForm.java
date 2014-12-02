@@ -8,7 +8,9 @@ package com.sistemas.vista;
 import Interfaces.InterfaceDetallePersonal;
 import com.sistemas.DAO.DetallePersonalDAO;
 import com.sistemas.DTO.DetallPersonal;
+import java.awt.HeadlessException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,6 +21,7 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
     InterfaceDetallePersonal adp= new DetallePersonalDAO();
     ArrayList <DetallPersonal> lista = new ArrayList<>();
     DefaultTableModel model;
+     DetallPersonal det;
     /**
      * Creates new form DetallesPersonalForm
      */
@@ -46,6 +49,7 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         txtdescuento = new javax.swing.JTextField();
         txtcantidad1 = new javax.swing.JTextField();
+        txtiddetalle = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         btnagregar = new javax.swing.JButton();
         btneliminar = new javax.swing.JButton();
@@ -109,7 +113,9 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtcantidad1)
                     .addComponent(txtdescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtiddetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,7 +123,8 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtcantidad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(txtiddetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtdescuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -195,7 +202,7 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
             tblista1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tblista1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -204,16 +211,20 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tblista1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(tblista1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,7 +245,29 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
 
     private void btnagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarActionPerformed
         // TODO add your handling code here:
-        
+      
+        int iddetallepersonal;
+        double cantipagada;
+        int descuento;
+        boolean op;
+        try{
+            iddetallepersonal=Integer.parseInt(txtiddetalle.getText());
+            cantipagada=Double.parseDouble(txtcantidad1.getText());
+            descuento=Integer.parseInt( txtdescuento.getText());
+            det=new DetallPersonal(iddetallepersonal, cantipagada, descuento);
+            op=adp.crearDetalle(det);
+            limpiarComponentes();
+            if(op){
+                JOptionPane.showMessageDialog(null, "Registro Guardado");
+                LimpiarJTable();
+                cargarTabla();
+            }else{
+                JOptionPane.showMessageDialog(null, "Registro no Guardado");
+            }
+        }catch ( Exception e){
+            JOptionPane.showMessageDialog(null, e+"HOLA");
+            
+        }
         
         
         
@@ -254,10 +287,20 @@ void cargarTabla(){
     }
      tblista.setModel(model);    
 }
+ void limpiarComponentes(){
+   
+    txtcantidad1.setText(null);
+    txtdescuento.setText(null);
+    txtiddetalle.setText(null);
+      
     
-    
-    
-    
+ }
+     void LimpiarJTable(){
+        int a = model.getRowCount()-1;  //Índices van de 0 a n-1
+         for(int i=a;i>=0;i--){  
+            model.removeRow(i);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnagregar;
@@ -278,5 +321,6 @@ void cargarTabla(){
     private javax.swing.JPanel tblista1;
     private javax.swing.JTextField txtcantidad1;
     private javax.swing.JTextField txtdescuento;
+    private javax.swing.JTextField txtiddetalle;
     // End of variables declaration//GEN-END:variables
 }
