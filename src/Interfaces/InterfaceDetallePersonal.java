@@ -19,6 +19,6 @@ public interface InterfaceDetallePersonal {
    
     public ArrayList<DetallPersonal> listarDetallePersonal(String Detalle);
     
-    public boolean crearDetalle(DetallPersonal e);
-    public boolean eliminarDetalle(int id);
+    public int crearDetalle(DetallPersonal e);
+    public int eliminarDetalle(int id);
 }

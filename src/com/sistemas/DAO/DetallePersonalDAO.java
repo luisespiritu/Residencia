@@ -8,7 +8,7 @@ package com.sistemas.DAO;
 
 import Interfaces.InterfaceDetallePersonal;
 import com.sistemas.DTO.DetallPersonal;
-import com.sistemas.DTO.Padre;
+
 import config.Conexion;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -29,7 +29,7 @@ String sql;
 
     @Override
     public ArrayList<DetallPersonal> listarDetalle() {
-        ArrayList<DetallPersonal> lista=new ArrayList<>();
+            ArrayList<DetallPersonal> lista=new ArrayList<>();
         sql = "SELECT * FROM detalle_personal";
         try {
             cx = Conexion.getConex();
@@ -47,11 +47,12 @@ String sql;
             JOptionPane.showMessageDialog(null, e);
         }
         return lista;
+
     }
 
     @Override
     public ArrayList<DetallPersonal> listarDetalle(int id) {
-         ArrayList<DetallPersonal> lista=new ArrayList<>();
+                 ArrayList<DetallPersonal> lista=new ArrayList<>();
         sql = "SELECT * FROM detalle_personal WHERE idDETALLE_PESONAL="+id;
         try {
             cx = Conexion.getConex();
@@ -69,7 +70,7 @@ String sql;
             JOptionPane.showMessageDialog(null, e);
         }
         return lista;
-        
+
     }
 
     @Override
@@ -78,8 +79,8 @@ String sql;
     }
 
     @Override
-    public boolean crearDetalle(DetallPersonal e) {
-        boolean op=false;
+    public int crearDetalle(DetallPersonal e) {
+                int op=0;
         sql="INSERT INTO detalle_personal(idDETALLE_PERSONAL,CANT_PAGADA,DESCUENTO) VALUES(null,"
                 +e.getIddetallepersonal()+",'"
                 +e.getCantipagada()+"','"
@@ -88,18 +89,34 @@ String sql;
             cx = Conexion.getConex();
             st = cx.createStatement();
             st.executeUpdate(sql);
-            op = true;
+            
         } catch (SQLException ex) {
-        
+        JOptionPane.showMessageDialog(null, e+"Luchito");
         }
        return op;
+
     }
 
     @Override
-    public boolean eliminarDetalle(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int eliminarDetalle(int id) {
+              int op=0;
+        sql ="DELETE FROM detalle_personal WHERE idDETALLE_PERSONAL="+id;
+        
+        try {
+            cx = Conexion.getConex();
+            st = cx.createStatement();
+            st.executeUpdate(sql);
+           
+        } catch (SQLException ex) {
+        }finally{
+            try {
+                cx.close();
+            } catch (SQLException ex) {                
+            }
+        }
+        return op;
+  
+        
     }
 
-    
-    
 }

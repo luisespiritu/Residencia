@@ -6,6 +6,7 @@
 package com.sistemas.vista;
 
 import Interfaces.InterfaceDetallePersonal;
+
 import com.sistemas.DAO.DetallePersonalDAO;
 import com.sistemas.DTO.DetallPersonal;
 import java.awt.HeadlessException;
@@ -142,10 +143,20 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
         });
 
         btneliminar.setText("Eliminar");
+        btneliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneliminarActionPerformed(evt);
+            }
+        });
 
         btnnuevo.setText("Nuevo");
 
         btnsalir.setText("Salir");
+        btnsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -249,7 +260,7 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
         int iddetallepersonal;
         double cantipagada;
         int descuento;
-        boolean op;
+        int op;
         try{
             iddetallepersonal=Integer.parseInt(txtiddetalle.getText());
             cantipagada=Double.parseDouble(txtcantidad1.getText());
@@ -257,7 +268,7 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
             det=new DetallPersonal(iddetallepersonal, cantipagada, descuento);
             op=adp.crearDetalle(det);
             limpiarComponentes();
-            if(op){
+            if(op==1){
                 JOptionPane.showMessageDialog(null, "Registro Guardado");
                 LimpiarJTable();
                 cargarTabla();
@@ -272,6 +283,34 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_btnagregarActionPerformed
+
+    private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnsalirActionPerformed
+
+    private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
+        // TODO add your handling code here:
+        
+        if(tblista.getSelectedRow()>=0){
+            int fila = tblista.getSelectedRow();
+            int id = (int) tblista.getValueAt(fila, 1);
+             int op = adp.eliminarDetalle(id);
+            if(op==1){
+                JOptionPane.showMessageDialog(null, "Registro Eliminado");
+                LimpiarJTable();
+                cargarTabla();
+            }else{
+                JOptionPane.showMessageDialog(null, "Registro no Eliminado");
+            }
+        }else{
+        JOptionPane.showMessageDialog(null, "Seleccionar Registro");
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_btneliminarActionPerformed
 void cargarTabla(){
     
     lista = adp.listarDetalle();
