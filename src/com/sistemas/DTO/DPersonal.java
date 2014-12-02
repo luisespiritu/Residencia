@@ -9,15 +9,15 @@ package com.sistemas.DTO;
  *
  * @author LUCHITO
  */
-public class DetallPersonal {
+public class DPersonal {
     private int iddetallepersonal;
     private double cantipagada;
     private int descuento;
 
-    public DetallPersonal() {
+    public DPersonal() {
     }
 
-    public DetallPersonal(int iddetallepersonal, double cantipagada, int descuento) {
+    public DPersonal(int iddetallepersonal, double cantipagada, int descuento) {
         this.iddetallepersonal = iddetallepersonal;
         this.cantipagada = cantipagada;
         this.descuento = descuento;

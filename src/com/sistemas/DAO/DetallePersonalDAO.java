@@ -7,7 +7,7 @@ package com.sistemas.DAO;
 
 
 import Interfaces.InterfaceDetallePersonal;
-import com.sistemas.DTO.DetallPersonal;
+import com.sistemas.DTO.DPersonal;
 
 import config.Conexion;
 import java.sql.Connection;
@@ -28,15 +28,15 @@ public class DetallePersonalDAO implements Interfaces.InterfaceDetallePersonal {
 String sql;
 
     @Override
-    public ArrayList<DetallPersonal> listarDetalle() {
-            ArrayList<DetallPersonal> lista=new ArrayList<>();
+    public ArrayList<DPersonal> listarDetalle() {
+            ArrayList<DPersonal> lista=new ArrayList<>();
         sql = "SELECT * FROM detalle_personal";
         try {
             cx = Conexion.getConex();
             st = cx.createStatement();  
             rs = st.executeQuery(sql);
             while(rs.next()){
-              DetallPersonal detal = new  DetallPersonal ();
+              DPersonal detal = new  DPersonal ();
                 detal.setIddetallepersonal(rs.getInt("idDETALLE_PERSONAL"));
                 detal.setCantipagada(rs.getDouble("CANT_PAGADA"));
                 detal.setDescuento(rs.getInt("DESCUENTO"));
@@ -51,15 +51,15 @@ String sql;
     }
 
     @Override
-    public ArrayList<DetallPersonal> listarDetalle(int id) {
-                 ArrayList<DetallPersonal> lista=new ArrayList<>();
+    public ArrayList<DPersonal> listarDetalle(int id) {
+                 ArrayList<DPersonal> lista=new ArrayList<>();
         sql = "SELECT * FROM detalle_personal WHERE idDETALLE_PESONAL="+id;
         try {
             cx = Conexion.getConex();
             st = cx.createStatement();  
             rs = st.executeQuery(sql);
             while(rs.next()){
-              DetallPersonal detal = new  DetallPersonal ();
+              DPersonal detal = new  DPersonal ();
                 detal.setIddetallepersonal(rs.getInt("idDETALLE_PERSONAL"));
                 detal.setCantipagada(rs.getDouble("CANT_PAGADA"));
                 detal.setDescuento(rs.getInt("DESCUENTO"));
@@ -74,12 +74,12 @@ String sql;
     }
 
     @Override
-    public ArrayList<DetallPersonal> listarDetallePersonal(String Detalle) {
+    public ArrayList<DPersonal> listarDetallePersonal(String Detalle) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int crearDetalle(DetallPersonal e) {
+    public int crearDetalle(DPersonal e) {
                 int op=0;
         sql="INSERT INTO detalle_personal(idDETALLE_PERSONAL,CANT_PAGADA,DESCUENTO) VALUES(null,"
                 +e.getIddetallepersonal()+",'"

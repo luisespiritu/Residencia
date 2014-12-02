@@ -8,7 +8,7 @@ package com.sistemas.vista;
 import Interfaces.InterfaceDetallePersonal;
 
 import com.sistemas.DAO.DetallePersonalDAO;
-import com.sistemas.DTO.DetallPersonal;
+import com.sistemas.DTO.DPersonal;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -20,9 +20,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class DetallesPersonalForm extends javax.swing.JInternalFrame {
     InterfaceDetallePersonal adp= new DetallePersonalDAO();
-    ArrayList <DetallPersonal> lista = new ArrayList<>();
+    ArrayList <DPersonal> lista = new ArrayList<>();
     DefaultTableModel model;
-     DetallPersonal det;
+     DPersonal det;
     /**
      * Creates new form DetallesPersonalForm
      */
@@ -265,7 +265,7 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
             iddetallepersonal=Integer.parseInt(txtiddetalle.getText());
             cantipagada=Double.parseDouble(txtcantidad1.getText());
             descuento=Integer.parseInt( txtdescuento.getText());
-            det=new DetallPersonal(iddetallepersonal, cantipagada, descuento);
+            det=new DPersonal(iddetallepersonal, cantipagada, descuento);
             op=adp.crearDetalle(det);
             limpiarComponentes();
             if(op==1){
