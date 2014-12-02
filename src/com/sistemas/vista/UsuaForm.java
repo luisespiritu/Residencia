@@ -361,6 +361,8 @@ for(int i=0;i<lista2.size();i++){
         int idpersonal, idusuario;
         String user,pasword,estado ;
         
+        
+        
                 
         
     }//GEN-LAST:event_jButton1ActionPerformed
