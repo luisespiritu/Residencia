@@ -22,7 +22,7 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
     InterfaceDetallePersonal adp= new DetallePersonalDAO();
     ArrayList <DPersonal> lista = new ArrayList<>();
     DefaultTableModel model;
-    DPersonal det;
+    
    
     /**
      * Creates new form DetallesPersonalForm
@@ -262,10 +262,10 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
 
     private void btnagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarActionPerformed
         // TODO add your handling code here:
+        DPersonal det;
         double cantip;
         int desc; boolean op;
         try{
-           
             cantip=Double.parseDouble(txtcantidad1.getText());
             desc=Integer.parseInt( txtdescuento.getText());
             det=new DPersonal( cantip, desc);
@@ -278,12 +278,12 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
             }else{
                 JOptionPane.showMessageDialog(null, "Registro no Guardado");
             }
-        }catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Inserte Datos");
+        } catch (NumberFormatException | HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "Ingresar datos");
             
         }
         
-        
+     
         
     }//GEN-LAST:event_btnagregarActionPerformed
 

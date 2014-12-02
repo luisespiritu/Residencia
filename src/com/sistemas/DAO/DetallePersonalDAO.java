@@ -79,12 +79,12 @@ String sql;
     }
 
     @Override
-    public boolean crearDetalle(DPersonal e) {
+    public boolean crearDetalle(DPersonal det) {
         boolean op=false;
         sql="INSERT INTO detalle_personal(idDETALLE_PERSONAL, CANT_PAGADA, DESCUENTO) VALUES(null,"
-                +e.getIddetallperson()+", '"
-                +e.getCantip()+"', '"
-                +e.getDesc()+"')";
+                +det.getIddetallperson()+", '"
+                +det.getCantip()+"', '"
+                +det.getDesc()+"')";
            
          try {
             cx = Conexion.getConex();
@@ -92,7 +92,7 @@ String sql;
             st.executeUpdate(sql);
             op=true;
         } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, e+"Datos no creados");
+        JOptionPane.showMessageDialog(null, det+"Datos no creados");
         }
        return op;
 
