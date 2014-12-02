@@ -22,7 +22,8 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
     InterfaceDetallePersonal adp= new DetallePersonalDAO();
     ArrayList <DPersonal> lista = new ArrayList<>();
     DefaultTableModel model;
-     DPersonal det;
+    DPersonal det;
+   int iddetallepersonal =0;
     /**
      * Creates new form DetallesPersonalForm
      */
@@ -257,12 +258,12 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
     private void btnagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarActionPerformed
         // TODO add your handling code here:
       
-        int iddetallepersonal;
+       
         double cantipagada;
         int descuento;
         int op;
         try{
-            iddetallepersonal=Integer.parseInt(txtiddetalle.getText());
+           
             cantipagada=Double.parseDouble(txtcantidad1.getText());
             descuento=Integer.parseInt( txtdescuento.getText());
             det=new DPersonal(iddetallepersonal, cantipagada, descuento);
