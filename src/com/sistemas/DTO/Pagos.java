@@ -19,8 +19,7 @@ public class Pagos {
     public Pagos() {
     }
 
-    public Pagos(int idpag, int idinter, double cantpag, String fecha, String motivo) {
-        this.idpag = idpag;
+    public Pagos( int idinter, double cantpag, String fecha, String motivo) {
         this.idinter = idinter;
         this.cantpag = cantpag;
         this.fecha = fecha;

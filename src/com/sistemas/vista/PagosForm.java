@@ -8,7 +8,10 @@ package com.sistemas.vista;
 import InterfacesPermiso.InterfacePagos;
 import com.sistemas.DAO.PagosDAO;
 import com.sistemas.DTO.Pagos;
+import java.awt.HeadlessException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,8 +20,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PagosForm extends javax.swing.JInternalFrame {
     InterfacePagos ip= new PagosDAO();
+    //InterfaceInterno ii= new InternoDAO();
     ArrayList<Pagos> lista3=new ArrayList<>();
-      DefaultTableModel model;
+    DefaultTableModel model;
     
 
     /**
@@ -284,6 +288,30 @@ public class PagosForm extends javax.swing.JInternalFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
+        Pagos p;
+        String motivo, fecha;
+        double cantpag;
+        boolean op;
+        try{
+            //idinter=aO.listarInternos(cboidinter.getSelectedItem().toString());
+            cantpag=Integer.parseInt(txtcantpag.getText());
+            fecha = new SimpleDateFormat("YYYY-MM-dd").format(dtfecha.getDate());
+            motivo =txtmotivo.getText();
+            p=new Pagos(idinter, cantpag, fecha, motivo);
+            op=ip.crearPagos(p);
+            limpiar();
+        if(op){
+            JOptionPane.showMessageDialog(null, "Registro Guardado!!");             
+        updateComponets();
+        }else{
+            JOptionPane.showMessageDialog(null, "Registro no Guardado!!");
+        }
+        }catch (NumberFormatException | HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "Ingresar datos");
+        }
+       
+        
+    
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -302,7 +330,11 @@ public class PagosForm extends javax.swing.JInternalFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnModificarActionPerformed
-void cargarTabla1(){
+void updateComponets(){
+            limpiarTabla0(model);
+            cargarTabla1();
+}
+    void cargarTabla1(){
     
     lista3 = ip.listarPagos();
     model = (DefaultTableModel) tblista2.getModel();
@@ -331,7 +363,7 @@ int a =model.getRowCount()-1;
             model.removeRow(i);
         } 
 }
-
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEliminar;
