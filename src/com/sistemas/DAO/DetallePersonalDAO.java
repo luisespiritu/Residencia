@@ -82,7 +82,7 @@ public class DetallePersonalDAO implements InterfacesPermiso.InterfaceDetallePer
     public boolean crearDetalle(DPersonal det) {
         boolean op=false;
         sql="INSERT INTO detalle_personal(idDETALLE_PERSONAL, CANT_PAGADA, DESCUENTO) VALUES(null,"
-                +det.getIddetallperson()+", '"
+                
                 +det.getCantip()+", '"
                 +det.getDesc()+"')";
            
