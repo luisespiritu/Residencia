@@ -17,9 +17,9 @@ public class Permiso {
     private int idinter;
     private int idperson;
     private String fechasalida;
-    private String fecharetorno;
     private String lugar;
     private String tipopermiso;
+     private String fecharetorno;
 
     public Permiso() {
     }
@@ -100,6 +100,7 @@ public class Permiso {
     }
 
    
-    }
 
-   
+    
+
+}

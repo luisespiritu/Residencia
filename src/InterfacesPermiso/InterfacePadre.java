@@ -25,6 +25,7 @@ public interface InterfacePadre {
     public boolean crearPadre(Padre e);
     public boolean editarPadre(Padre e);
     public boolean eliminarPadre(int id);
+     public int retornarIDpadre(String cate);
     
     
 }

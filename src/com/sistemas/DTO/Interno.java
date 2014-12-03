@@ -12,6 +12,8 @@ package com.sistemas.DTO;
  */
 public class Interno {
     private int idInterno;
+     private int idResidencia;
+      private int idPadre;
     private String nombre;
     private String apellidos;
     private String codigo;
@@ -20,8 +22,10 @@ public class Interno {
     public Interno() {
     }
 
-    public Interno(int idInterno, String nombre, String apellidos, String codigo, String lugar) {
+    public Interno(int idInterno, int idResidencia, int idPadre, String nombre, String apellidos, String codigo, String lugar) {
         this.idInterno = idInterno;
+        this.idResidencia = idResidencia;
+        this.idPadre = idPadre;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.codigo = codigo;
@@ -34,6 +38,22 @@ public class Interno {
 
     public void setIdInterno(int idInterno) {
         this.idInterno = idInterno;
+    }
+
+    public int getIdResidencia() {
+        return idResidencia;
+    }
+
+    public void setIdResidencia(int idResidencia) {
+        this.idResidencia = idResidencia;
+    }
+
+    public int getIdPadre() {
+        return idPadre;
+    }
+
+    public void setIdPadre(int idPadre) {
+        this.idPadre = idPadre;
     }
 
     public String getNombre() {
@@ -67,6 +87,7 @@ public class Interno {
     public void setLugar(String lugar) {
         this.lugar = lugar;
     }
+
     
     
 }

@@ -176,6 +176,27 @@ String sql;
         
          //To change body of generated methods, choose Tools | Templates.
 
+    @Override
+    public int retornarIDpadre(String cate) {
+        
+        int idcam=0;
+         sql="SELECT *FROM padre WHERE NOMBRE='"+cate+"'";
+         
+         try {
+             cx = Conexion.getConex();
+            st = cx.createStatement();
+            rs = st.executeQuery(sql);
+            //cx.close();
+            while(rs.next())
+            {
+                idcam=rs.getInt("idPADRE");
+            }
+         } catch (Exception e) {
+             JOptionPane.showMessageDialog(null,"ERROR"+e);
+         }
+         return idcam;
+    }
+
 }
    
 

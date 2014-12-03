@@ -16,8 +16,9 @@ public interface InterfacePermiso {
     public ArrayList<Permiso> listarPermiso();
     public ArrayList<Permiso> listarPermiso(int id);
     
-    public boolean crearPermiso(Permiso p);
+    public int crearPermiso(Permiso p);
     public boolean editarPermiso(Permiso p);
     public boolean eliminaPermiso(int id);
+   
     
 }

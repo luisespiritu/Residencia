@@ -21,5 +21,6 @@ import java.util.ArrayList;
     public int CrearInterno(Interno c);
     public int EditarInterno(Interno c);
     public int EliminarInterno(int id);
+    public int retornarIDinterno(String cate);
     
 }

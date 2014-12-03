@@ -20,10 +20,10 @@ import javax.swing.JOptionPane;
  * @author LUCHITO
  */
 public class PermisoDAO implements InterfacePermiso {
-private Connection cx = null;//permite recibir la conexion
-    private Statement st;//permite ejecutar la consulta
-    private ResultSet rs;//Recibe el resultado de la consulta
-String sql;
+private Connection cx = null;
+    private Statement st;
+    private ResultSet rs;
+    private String sql; 
     @Override
     public ArrayList<Permiso> listarPermiso() {
         ArrayList<Permiso> lista = new ArrayList();
@@ -64,7 +64,8 @@ String sql;
             while(rs.next()){
                 Permiso permiso=new Permiso();
                 permiso.setIdperm(rs.getInt("idPERMISO"));
-                permiso.setIdpad(rs.getInt("idPADRE"));
+                permiso.setIdperm(rs.getInt("idPADRE"));
+                permiso.setIdpad(rs.getInt("idINTERNO"));
                 permiso.setIdinter(rs.getInt("idPERSONAL"));
                 permiso.setFechasalida(rs.getString("FECHA_SALIDA"));
                 permiso.setTipopermiso(rs.getString("Tipo"));
@@ -83,29 +84,37 @@ String sql;
     }
 
     @Override
-    public boolean crearPermiso(Permiso p) {
-        boolean op=false;
-        sql="INSERT INTO permiso(idPERMISO,idPADRE,idINTERNO,idPERSONAL,FECHA_SALIDA,HORA_SALIDA,TIPO,LUGAR,FECHA_RETORNO,HORA_RETORNO) VALUES (null, "
-                
-                +p.getIdpad()+",'"
-                +p.getIdinter()+",'"
-                +p.getIdperson()+",'"
-                +p.getFechasalida()+"','"
-                +p.getTipopermiso()+"','"
-                +p.getLugar()+"','"
-                +p.getFecharetorno()+"')";
-               
+    public int crearPermiso(Permiso p) {
+        
+        
+       int op=0;
+        sql="INSERT INTO permiso(idPERMISO,idPADRE,idINTERNO,idPERSONAL,FECHA_SALIDA,TIPO,LUGAR,FECHA_RETORNO) VALUES(null,"+p.getIdperm()+" ,"+p.getIdpad()+","+p.getIdinter()+","+p.getIdperson()+",'"+p.getFechasalida()+"','"+p.getTipopermiso()+"','"+p.getLugar()+"','" +p.getFecharetorno()+"')";
+               System.out.println(sql);
         try {
             cx = Conexion.getConex();
             st = cx.createStatement();
-            st.executeUpdate(sql);
-            op = true;
+            op=  st.executeUpdate(sql);
+            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
        return op;
+           /*  
+       int op=0;
+        sql = "INSERT INTO curso(idCurso, nom_curso, nota1, nota2, nota3, promedio) VALUES(NULL,'"+c.getNom_curso()+"',"+c.getNota1()
+                +","+c.getNota2()+","+c.getNota3()+","+c.getPromedio()+")";
+        System.out.println(sql);
+        try {
+            cx = Conexion.getConex();
+            st = cx.createStatement();
+            op=  st.executeUpdate(sql);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return op;
+                   */
     }
-
+     
     @Override
     public boolean editarPermiso(Permiso p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -115,5 +124,7 @@ String sql;
     public boolean eliminaPermiso(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
     
 }
