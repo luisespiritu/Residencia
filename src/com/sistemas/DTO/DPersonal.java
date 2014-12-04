@@ -10,6 +10,8 @@ package com.sistemas.DTO;
  * @author LUCHITO
  */
 public class DPersonal {
+    
+    private int idpersonal;
     private int iddetallperson;
     private double cantip;
     private int desc;
@@ -20,6 +22,14 @@ public class DPersonal {
     public DPersonal( double cantip, int desc) {
        this.cantip = cantip;
        this.desc = desc;
+    }
+
+    public int getIdpersonal() {
+        return idpersonal;
+    }
+
+    public void setIdpersonal(int idpersonal) {
+        this.idpersonal = idpersonal;
     }
 
     public int getIddetallperson() {

@@ -5,14 +5,22 @@
  */
 package com.sistemas.vista;
 
-import com.sistemas.DAO.PermisoDAO;
-import com.sistemas.DTO.Permiso;
 import InterfacesPermiso.InterfacePermiso;
+import com.sistemas.DAO.InternoDAO;
+import com.sistemas.DAO.PadreDAO;
+import com.sistemas.DAO.PermisoDAO;
+import com.sistemas.DAO.PeronalDAO;
+import com.sistemas.DTO.Interno;
+import com.sistemas.DTO.Padre;
+import com.sistemas.DTO.Permiso;
+import com.sistemas.DTO.Personal;
 import java.awt.HeadlessException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,9 +29,26 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PermisoFormC extends javax.swing.JInternalFrame {
     
+    DefaultComboBoxModel<Object> modelcombo= new DefaultComboBoxModel<>();
+    ArrayList<Padre> listaPadre;
+    PadreDAO  dp= new PadreDAO();
+    
+    DefaultComboBoxModel<Object> modelcomboInterno= new DefaultComboBoxModel<>();
+    ArrayList<Interno> listaInterno;
+    InternoDAO  inter= new InternoDAO();
+    
+    DefaultComboBoxModel<Object> modelcombopersonal= new DefaultComboBoxModel<>();
+    ArrayList<Personal> listaPersonal;
+    
+    PeronalDAO  perso= new PeronalDAO();
+    
+    
+    
+    
     InterfacePermiso ao = new PermisoDAO();
     ArrayList<Permiso> lista = new ArrayList<>();
     DefaultTableModel model;
+    Permiso c;
 
     /**
      * Creates new form PermisoFormC
@@ -32,8 +57,52 @@ public class PermisoFormC extends javax.swing.JInternalFrame {
         initComponents();
         
         cargarTabla();
-        
+        cargarPadre();
+        cargarPersonal();
+        cargarInterno();
     }
+    
+    final void cargarPadre()
+    {
+     modelcombo.addElement("seleccione padre");
+     cboidpadre.setModel(modelcombo);
+     listaPadre=dp.listarPadre();
+     for(int i=0;i<listaPadre.size();i++)
+     {
+         modelcombo.addElement(listaPadre.get(i).getNombres());
+     }
+        cboidpadre.setModel(modelcombo);
+     
+    }
+    final void cargarPersonal()
+    {
+     modelcombopersonal.addElement("seleccione ");
+     cboidpersonal.setModel(modelcombopersonal);
+     listaPersonal=perso.listarPersonal();
+     for(int i=0;i<listaPersonal.size();i++)
+     {
+         modelcombopersonal.addElement(listaPersonal.get(i).getNombre());
+     }
+        cboidpersonal.setModel(modelcombopersonal);
+     
+    }
+    final void cargarInterno()
+    {
+     modelcomboInterno.addElement("seleccione ");
+     cboidinterno.setModel(modelcomboInterno);
+     listaInterno =inter.listarInterno();
+     for(int i=0;i<listaInterno.size();i++)
+     {
+         modelcomboInterno.addElement(listaInterno.get(i).getNombre());
+     }
+        cboidinterno.setModel(modelcomboInterno);
+    }
+    
+    
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,8 +114,6 @@ public class PermisoFormC extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -63,203 +130,165 @@ public class PermisoFormC extends javax.swing.JInternalFrame {
         cboidpadre = new javax.swing.JComboBox();
         cboidinterno = new javax.swing.JComboBox();
         cboidpersonal = new javax.swing.JComboBox();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jFormattedTextField3 = new javax.swing.JFormattedTextField();
-        jFormattedTextField4 = new javax.swing.JFormattedTextField();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        txtHoraRetorno = new javax.swing.JFormattedTextField();
+        txtidpersonal = new javax.swing.JTextField();
+        txtidPadre = new javax.swing.JTextField();
+        txtidinterno = new javax.swing.JTextField();
+        txtHoraSalida = new javax.swing.JTextField();
+        jdatesalida = new com.toedter.calendar.JDateChooser();
+        jdateRetorno = new com.toedter.calendar.JDateChooser();
         jPanel5 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblista = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         btnagregar = new javax.swing.JButton();
         btnnuevo = new javax.swing.JButton();
         btnmodificar = new javax.swing.JButton();
         btneliminar = new javax.swing.JButton();
         btnsalir = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblista = new javax.swing.JTable();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("RESIDENCIA DE SEÑORITAS");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setText("AUTORIZACIÓN DE SALIDA ZONAL ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(32, 32, 32))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addGap(0, 26, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("AUTORIZACIÓN DE SALIDA ZONAL ");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(21, 21, 21))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 37, -1, -1));
+
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Interno"));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setText("ID_PERSONAL:");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 69, -1, -1));
 
         jLabel4.setText("ID_PADRE:");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 31, -1, -1));
 
         jLabel8.setText("Fecha_SALIDA:");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 104, 95, -1));
 
         jLabel9.setText("Hora de Salida:");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 104, 91, -1));
 
         jLabel11.setText("ID_INTERNO:");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 31, -1, -1));
 
         jLabel12.setText("Fecha_RETORNO:");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 135, 109, -1));
 
         jLabel13.setText("Hora de Retorno:");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 101, -1));
+        jPanel3.add(txtlugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 208, 139, -1));
 
         jLabel14.setText("TIPO DE PERMISO");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 173, 109, -1));
 
         jLabel15.setText("Lugar:");
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 211, 39, -1));
 
         cbopermiso.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar_tipo_Permiso:", "Corto", "Largo" }));
+        jPanel3.add(cbopermiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 170, 200, -1));
 
-        cboidpadre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboidpadre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboidpadreActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cboidpadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 28, 168, -1));
 
-        cboidinterno.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboidinterno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboidinternoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cboidinterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 28, 129, -1));
 
-        cboidpersonal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboidpersonal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboidpersonalActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cboidpersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 66, 187, -1));
+        jPanel3.add(txtHoraRetorno, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 160, -1));
+        jPanel3.add(txtidpersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 60, -1));
+        jPanel3.add(txtidPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 60, -1));
+        jPanel3.add(txtidinterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 70, -1));
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("##/##/####"))));
+        txtHoraSalida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHoraSalidaActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtHoraSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 160, -1));
+        jPanel3.add(jdatesalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 130, -1));
+        jPanel3.add(jdateRetorno, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 130, -1));
 
-        jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("##:##:##"))));
-
-        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat(""))));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(cboidpadre, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addGap(12, 12, 12)
-                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtlugar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                                        .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cbopermiso, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(18, 18, 18))))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(jLabel11)
-                                .addGap(34, 34, 34)
-                                .addComponent(cboidinterno, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jFormattedTextField3)
-                                    .addComponent(jFormattedTextField4)))))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboidpersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(79, 79, 79))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(cboidpadre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(cboidinterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(cboidpersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
-                            .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(84, 84, 84))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
-                            .addComponent(cbopermiso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtlugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel15)))))
-        );
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 700, 280));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista de registro"));
+
+        tblista.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "N°", "ID_PERMISO", "ID_PADRE", "ID_INTER", "ID_PERS", "FECHA_SALIDA", "HORA DE SALIDA", "Fc.Retorno", "Hr.Retorno", "Tipo", "lugar"
+            }
+        ));
+        tblista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblistaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblista);
+        if (tblista.getColumnModel().getColumnCount() > 0) {
+            tblista.getColumnModel().getColumn(0).setMaxWidth(30);
+            tblista.getColumnModel().getColumn(1).setMaxWidth(100);
+            tblista.getColumnModel().getColumn(2).setMaxWidth(60);
+            tblista.getColumnModel().getColumn(3).setMaxWidth(60);
+            tblista.getColumnModel().getColumn(4).setMaxWidth(60);
+            tblista.getColumnModel().getColumn(5).setMaxWidth(250);
+            tblista.getColumnModel().getColumn(6).setMaxWidth(80);
+            tblista.getColumnModel().getColumn(7).setMaxWidth(100);
+            tblista.getColumnModel().getColumn(8).setMaxWidth(250);
+        }
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1085, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 177, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 36, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 720, 220));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Operaciones"));
 
@@ -337,82 +366,11 @@ public class PermisoFormC extends javax.swing.JInternalFrame {
                 .addComponent(btnsalir))
         );
 
-        tblista.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(744, 330, -1, -1));
 
-            },
-            new String [] {
-                "N°", "ID_PERMISO", "ID_PADRE", "ID_INTER", "ID_PERS", "FECHA_SALIDA", "TIPO", "LUGAR", "FECHA_RETOR"
-            }
-        ));
-        tblista.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblistaMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblista);
-        if (tblista.getColumnModel().getColumnCount() > 0) {
-            tblista.getColumnModel().getColumn(0).setMaxWidth(30);
-            tblista.getColumnModel().getColumn(1).setMaxWidth(100);
-            tblista.getColumnModel().getColumn(2).setMaxWidth(60);
-            tblista.getColumnModel().getColumn(3).setMaxWidth(60);
-            tblista.getColumnModel().getColumn(4).setMaxWidth(60);
-            tblista.getColumnModel().getColumn(5).setMaxWidth(250);
-            tblista.getColumnModel().getColumn(6).setMaxWidth(80);
-            tblista.getColumnModel().getColumn(7).setMaxWidth(100);
-            tblista.getColumnModel().getColumn(8).setMaxWidth(250);
-        }
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(417, 417, 417)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(247, 247, 247))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(209, 209, 209)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setText("RESIDENCIA DE SEÑORITAS");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -424,39 +382,46 @@ public class PermisoFormC extends javax.swing.JInternalFrame {
 
     private void tblistaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblistaMouseClicked
         // TODO add your handling code here:
-        
+        int fila=tblista.rowAtPoint(evt.getPoint());
+        txtidPadre.setText(tblista.getValueAt(fila,1).toString());
+        txtidpersonal.setText(tblista.getValueAt(fila,2).toString());
+        txtlugar.setText(tblista.getValueAt(fila,10).toString());
+        txtidinterno.setText(tblista.getValueAt(fila,3).toString());
+        txtHoraSalida.setText(tblista.getValueAt(fila,6).toString());
+         txtHoraRetorno.setText(tblista.getValueAt(fila,8).toString());
+         jdatesalida.setDate(Date.valueOf(tblista.getValueAt(fila,5).toString()));
+         jdateRetorno.setDate(Date.valueOf(tblista.getValueAt(fila,7).toString()));
     }//GEN-LAST:event_tblistaMouseClicked
 
     private void btnagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarActionPerformed
-        // TODO add your handling code here:
-        /*Permiso p;
-        String lugar,tipopermiso;
-        int idpad,idinter,idperson;
-        String fechasalida,fecharetorno;
-        boolean op;
-        try{
-            
-          
-           // idinter=Integer.parseInt(txtidinterno.getText());
-            //idperson=Integer.parseInt(txtidpersonal.getText());
-            fechasalida = new SimpleDateFormat("YYYY-MM-dd  ").format(jdcfechasalida.getDate());
-            fecharetorno = new SimpleDateFormat("YYYY-MM-dd  ").format(jdcfecharetorno.getDate());
-            tipopermiso=cbopermiso.getSelectedItem().toString();
-            lugar=txtlugar.getText();
-            //p=new Permiso(idperson, idpad, idinter, idperson, fechasalida, fecharetorno, lugar, tipopermiso);
-            //op = ao.crearPermiso(p);
-            limpiar();
-        if(op){
-            JOptionPane.showMessageDialog(null, "Registro Guardado!!");             
-        updateComponets();
+        String fechasalida;
+        String fecharetorno;
+      
+        int id=0;
+        
+        double promedio;
+        int permiso =Integer.parseInt(txtidPadre.getText());
+        int padre=Integer.parseInt(txtidPadre.getText());
+        int interno=Integer.parseInt(txtidinterno.getText());
+        int personal=Integer.parseInt(txtidpersonal.getText());
+       //String fechasalida=((JTextField)jdatesalida.getDateEditor().getUiComponent()).getText();
+        fechasalida = new SimpleDateFormat("YYYY-MM-dd").format(jdatesalida.getDate());
+       String horasalida=txtHoraSalida.getText();
+       // String fecharetorno=((JTextField)jdateRetorno.getDateEditor().getUiComponent()).getText();
+        fecharetorno = new SimpleDateFormat("YYYY-MM-dd").format(jdateRetorno.getDate());
+            String horaretorno=txtHoraRetorno.getText();
+            String tipo=cbopermiso.getSelectedItem().toString();
+            String lugar=txtlugar.getText();
+        c= new Permiso(permiso,padre, interno,personal,fechasalida,horasalida,fecharetorno,horaretorno,tipo,lugar);
+        id=ao.crearPermiso(c); 
+        if(id!=0){
+            JOptionPane.showMessageDialog(null, "Operacion exitosa!!");
+            limpiarTabla(model);
+            cargarTabla();
         }else{
-            JOptionPane.showMessageDialog(null, "Registro no Guardado!!");
+            JOptionPane.showMessageDialog(null, "Error en la operacion!");
         }
-            
-        }catch (NumberFormatException | HeadlessException e){
-            JOptionPane.showMessageDialog(null, "Ingresar datos");
-            
-        }*/
+        
     }//GEN-LAST:event_btnagregarActionPerformed
 
     private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
@@ -472,7 +437,52 @@ public class PermisoFormC extends javax.swing.JInternalFrame {
         
         
         
+        
     }//GEN-LAST:event_btneliminarActionPerformed
+
+    private void cboidpadreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboidpadreActionPerformed
+        // TODO add your handling code here:
+        
+        String padre=cboidpadre.getSelectedItem().toString();
+        int id;
+        int x=cboidpadre.getSelectedIndex();
+        if(x!=0)
+        {
+            id=dp.retornarIDpadre(padre);
+            txtidPadre.setText(""+id);
+        
+        }
+    }//GEN-LAST:event_cboidpadreActionPerformed
+
+    private void cboidpersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboidpersonalActionPerformed
+        // TODO add your handling code here:
+        String personal=cboidpersonal.getSelectedItem().toString();
+        int id;
+        int x=cboidpersonal.getSelectedIndex();
+        if(x!=0)
+        {
+            id=perso.retornarIDpersonal(personal);
+            txtidpersonal.setText(""+id);
+        
+        }
+    }//GEN-LAST:event_cboidpersonalActionPerformed
+
+    private void cboidinternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboidinternoActionPerformed
+        // TODO add your handling code here:
+        String interno=cboidinterno.getSelectedItem().toString();
+        int id;
+        int x=cboidinterno.getSelectedIndex();
+        if(x!=0)
+        {
+            id=inter.retornarIDinterno(interno);
+            txtidinterno.setText(""+id);
+        
+        }
+    }//GEN-LAST:event_cboidinternoActionPerformed
+
+    private void txtHoraSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoraSalidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHoraSalidaActionPerformed
 void updateComponets(){
             limpiarTabla(model);
             cargarTabla();
@@ -488,10 +498,12 @@ void cargarTabla(){
         datos [3]=lista.get(i).getIdinter();
         datos [4]=lista.get(i).getIdperson();
         datos [5]=lista.get(i).getFechasalida();
+        datos [6]=lista.get(i).getHorasalida();
+        datos [7]=lista.get(i).getFecharetorno();
+        datos [8]=lista.get(i).getHoraretorno();
+        datos [9]=lista.get(i).getTipopermiso();
+        datos [10]=lista.get(i).getLugar();
         
-        datos [6]=lista.get(i).getTipopermiso();
-        datos [7]=lista.get(i).getLugar();
-        datos [8]=lista.get(i).getFecharetorno();
         
        model.addRow(datos);
     }
@@ -534,11 +546,6 @@ int a =model.getRowCount()-1;
     private javax.swing.JComboBox cboidpadre;
     private javax.swing.JComboBox cboidpersonal;
     private javax.swing.JComboBox cbopermiso;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
-    private javax.swing.JFormattedTextField jFormattedTextField4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -551,12 +558,18 @@ int a =model.getRowCount()-1;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private com.toedter.calendar.JDateChooser jdateRetorno;
+    private com.toedter.calendar.JDateChooser jdatesalida;
     private javax.swing.JTable tblista;
+    private javax.swing.JFormattedTextField txtHoraRetorno;
+    private javax.swing.JTextField txtHoraSalida;
+    private javax.swing.JTextField txtidPadre;
+    private javax.swing.JTextField txtidinterno;
+    private javax.swing.JTextField txtidpersonal;
     private javax.swing.JTextField txtlugar;
     // End of variables declaration//GEN-END:variables
 }

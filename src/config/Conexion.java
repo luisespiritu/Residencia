@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author LUCHITO
  */
 public class Conexion {
-    private static final String url="jdbc:mysql://localhost:3306/bd_residencia";
+    private static final String url="jdbc:mysql://localhost:3306/111";
     private static final String usuario="root";
     private static final String clave="root";
     private static final String driver ="com.mysql.jdbc.Driver";

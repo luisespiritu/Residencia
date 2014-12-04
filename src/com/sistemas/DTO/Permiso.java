@@ -17,22 +17,26 @@ public class Permiso {
     private int idinter;
     private int idperson;
     private String fechasalida;
+    private String Horasalida;
     private String lugar;
     private String tipopermiso;
      private String fecharetorno;
+     private String Horaretorno;
 
     public Permiso() {
     }
 
-    public Permiso(int idperm, int idpad, int idinter, int idperson, String fechasalida, String fecharetorno, String lugar, String tipopermiso) {
+    public Permiso(int idperm, int idpad, int idinter, int idperson, String fechasalida, String Horasalida, String lugar, String tipopermiso, String fecharetorno, String Horaretorno) {
         this.idperm = idperm;
         this.idpad = idpad;
         this.idinter = idinter;
         this.idperson = idperson;
         this.fechasalida = fechasalida;
-        this.fecharetorno = fecharetorno;
+        this.Horasalida = Horasalida;
         this.lugar = lugar;
         this.tipopermiso = tipopermiso;
+        this.fecharetorno = fecharetorno;
+        this.Horaretorno = Horaretorno;
     }
 
     public int getIdperm() {
@@ -75,12 +79,12 @@ public class Permiso {
         this.fechasalida = fechasalida;
     }
 
-    public String getFecharetorno() {
-        return fecharetorno;
+    public String getHorasalida() {
+        return Horasalida;
     }
 
-    public void setFecharetorno(String fecharetorno) {
-        this.fecharetorno = fecharetorno;
+    public void setHorasalida(String Horasalida) {
+        this.Horasalida = Horasalida;
     }
 
     public String getLugar() {
@@ -99,8 +103,23 @@ public class Permiso {
         this.tipopermiso = tipopermiso;
     }
 
-   
+    public String getFecharetorno() {
+        return fecharetorno;
+    }
 
+    public void setFecharetorno(String fecharetorno) {
+        this.fecharetorno = fecharetorno;
+    }
+
+    public String getHoraretorno() {
+        return Horaretorno;
+    }
+
+    public void setHoraretorno(String Horaretorno) {
+        this.Horaretorno = Horaretorno;
+    }
+
+    
     
 
 }

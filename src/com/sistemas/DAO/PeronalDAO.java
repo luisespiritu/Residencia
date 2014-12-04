@@ -83,7 +83,6 @@ ArrayList<Personal> lista = new ArrayList();
     return lista;   
     }
 
-    @Override
     public ArrayList<Personal> listarPersonal(String Padre) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -110,12 +109,10 @@ ArrayList<Personal> lista = new ArrayList();
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
     public int eliminarPersonal(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
     public int retornarIDpersonal(String cate) {
              int idcam=0;
          sql="SELECT *FROM personal WHERE NOMBRE='"+cate+"'";
@@ -133,6 +130,21 @@ ArrayList<Personal> lista = new ArrayList();
              JOptionPane.showMessageDialog(null,"ERROR"+e);
          }
          return idcam;
+    }
+
+    @Override
+    public ArrayList<Personal> buscarPersonal(String nomper) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int buscarIdPersonal(String nomper) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int deletePersonal(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

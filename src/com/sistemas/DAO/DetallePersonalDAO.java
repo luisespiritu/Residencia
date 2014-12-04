@@ -38,6 +38,7 @@ public class DetallePersonalDAO implements InterfacesPermiso.InterfaceDetallePer
             while(rs.next()){
               DPersonal detal = new  DPersonal ();
                 detal.setIddetallperson(rs.getInt("idDETALLE_PERSONAL"));
+                detal.setIdpersonal(rs.getInt("idPERSONAL"));
                 detal.setCantip(rs.getDouble("CANT_PAGADA"));
                 detal.setDesc(rs.getInt("DESCUENTO"));
               
@@ -61,6 +62,7 @@ public class DetallePersonalDAO implements InterfacesPermiso.InterfaceDetallePer
             while(rs.next()){
               DPersonal detal = new  DPersonal ();
                 detal.setIddetallperson(rs.getInt("idDETALLE_PERSONAL"));
+                 detal.setIdpersonal(rs.getInt("idPERSONAL"));
                 detal.setCantip(rs.getDouble("CANT_PAGADA"));
                 detal.setDesc(rs.getInt("DESCUENTO"));
               
@@ -81,8 +83,8 @@ public class DetallePersonalDAO implements InterfacesPermiso.InterfaceDetallePer
     @Override
     public boolean crearDetalle(DPersonal det) {
         boolean op=false;
-        sql="INSERT INTO detalle_personal(idDETALLE_PERSONAL, CANT_PAGADA, DESCUENTO) VALUES(null,"
-                
+        sql="INSERT INTO detalle_personal(idDETALLE_PERSONAL,idPERSONAL, CANT_PAGADA, DESCUENTO) VALUES(null,"
+                +det.getIdpersonal()+"',"
                 +det.getCantip()+", '"
                 +det.getDesc()+"')";
            

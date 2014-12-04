@@ -6,11 +6,15 @@
 package com.sistemas.vista;
 
 import InterfacesPermiso.InterfaceDetallePersonal;
+import InterfacesPermiso.InterfacePersonal;
 
 import com.sistemas.DAO.DetallePersonalDAO;
+import com.sistemas.DAO.PeronalDAO;
 import com.sistemas.DTO.DPersonal;
+import com.sistemas.DTO.Personal;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,9 +24,15 @@ import javax.swing.table.DefaultTableModel;
  */
 public class DetallesPersonalForm extends javax.swing.JInternalFrame {
     InterfaceDetallePersonal adp= new DetallePersonalDAO();
+    InterfacePersonal fc= new PeronalDAO();
     ArrayList <DPersonal> lista = new ArrayList<>();
     DefaultTableModel model;
      DPersonal det=new DPersonal();
+     
+    DefaultComboBoxModel<Object> modelcombopersonal= new DefaultComboBoxModel<>();
+    ArrayList<Personal> listaPersonal;
+     PeronalDAO pd= new PeronalDAO();
+     
    
     /**
      * Creates new form DetallesPersonalForm
@@ -30,6 +40,7 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
     public DetallesPersonalForm() {
         initComponents();
         cargarTabla();
+        cargarPersonal();
     }
 
     /**
@@ -52,9 +63,8 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
         txtdescuento = new javax.swing.JTextField();
         txtcantidad1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        cboidpersonal = new javax.swing.JComboBox();
+        txtpersonal = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         btnagregar = new javax.swing.JButton();
         btneliminar = new javax.swing.JButton();
@@ -107,7 +117,11 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Id_Personal:");
 
-        jLabel5.setText("Id_DetalleP:");
+        cboidpersonal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboidpersonalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -116,44 +130,38 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(33, 33, 33)
-                        .addComponent(txtdescuento, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE))
+                        .addComponent(txtdescuento)
+                        .addGap(15, 15, 15))
+                    .addComponent(txtcantidad1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(41, 41, 41)
-                        .addComponent(txtcantidad1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2))))
+                        .addComponent(cboidpersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtpersonal)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel4)
+                    .addComponent(cboidpersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtpersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtcantidad1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabel2)
+                    .addComponent(txtcantidad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtdescuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addContainerGap())
+                    .addComponent(jLabel3)
+                    .addComponent(txtdescuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("OPERACIONES"));
@@ -220,12 +228,19 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "N°", "ID_DETALLE", "CANTIDAD", "DESCUENTO (%)"
+                "N°", "ID_Personal", "ID_DETALLE", "CANTIDAD", "DESCUENTO (%)"
             }
         ));
+        tblista.addHierarchyListener(new java.awt.event.HierarchyListener() {
+            public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
+                tblistaHierarchyChanged(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblista);
         if (tblista.getColumnModel().getColumnCount() > 0) {
             tblista.getColumnModel().getColumn(0).setMaxWidth(60);
+            tblista.getColumnModel().getColumn(1).setMaxWidth(60);
+            tblista.getColumnModel().getColumn(2).setMaxWidth(60);
         }
 
         javax.swing.GroupLayout tblista1Layout = new javax.swing.GroupLayout(tblista1);
@@ -234,7 +249,7 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
             tblista1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tblista1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
+                .addComponent(jScrollPane2)
                 .addContainerGap())
         );
         tblista1Layout.setVerticalGroup(
@@ -252,16 +267,16 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 50, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tblista1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(tblista1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,7 +287,7 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(tblista1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -286,7 +301,7 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
         double cantip;
         int desc; boolean op;
         try{
-           //idpersonal = aO.listar(cboidpersonal.getSelectedItem().toString());
+           
             cantip=Double.parseDouble(txtcantidad1.getText());
             desc=Integer.parseInt( txtdescuento.getText());
             det=new DPersonal( cantip, desc);
@@ -340,16 +355,50 @@ public class DetallesPersonalForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         limpiarComponentes10();
     }//GEN-LAST:event_btnnuevoActionPerformed
-void cargarTabla(){
+
+    private void cboidpersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboidpersonalActionPerformed
+        // TODO add your handling code here:
+         String personal=cboidpersonal.getSelectedItem().toString();
+        int id;
+        int x=cboidpersonal.getSelectedIndex();
+        if(x!=0)
+        {
+            id=pd.retornarIDpersonal(personal);
+            txtpersonal.setText(""+id);
+        
+        }
+        
+        
+        
+    }//GEN-LAST:event_cboidpersonalActionPerformed
+
+    private void tblistaHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_tblistaHierarchyChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblistaHierarchyChanged
+ final void cargarPersonal()
+    {
+     modelcombopersonal.addElement("seleccione ");
+     cboidpersonal.setModel(modelcombopersonal);
+     listaPersonal=pd.listarPersonal();
+     for(int i=0;i<listaPersonal.size();i++)
+     {
+         modelcombopersonal.addElement(listaPersonal.get(i).getNombre());
+     }
+        cboidpersonal.setModel(modelcombopersonal);
+     
+    }
+    
+    void cargarTabla(){
     
     lista = adp.listarDetalle();
     model = (DefaultTableModel) tblista.getModel();
-    Object[] datos = new Object[4];
+    Object[] datos = new Object[5];
     for(int i=0;i<lista.size();i++){
         datos[0]=i+1;
         datos[1]=lista.get(i).getIddetallperson();
-        datos[2]=lista.get(i).getCantip();
-        datos[3]=lista.get(i).getDesc();
+        datos[2]=lista.get(i).getIdpersonal();
+        datos[3]=lista.get(i).getCantip();
+        datos[4]=lista.get(i).getDesc();
         
      model.addRow(datos);
     }
@@ -375,23 +424,22 @@ void cargarTabla(){
     private javax.swing.JButton btneliminar;
     private javax.swing.JButton btnnuevo;
     private javax.swing.JButton btnsalir;
+    private javax.swing.JComboBox cboidpersonal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTable tblista;
     private javax.swing.JPanel tblista1;
     private javax.swing.JTextField txtcantidad1;
     private javax.swing.JTextField txtdescuento;
+    private javax.swing.JTextField txtpersonal;
     // End of variables declaration//GEN-END:variables
 }

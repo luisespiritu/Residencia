@@ -886,52 +886,19 @@ public class InternoForm extends javax.swing.JInternalFrame {
     private void btnagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarActionPerformed
         // TODO add your handling code here:
 
-        double cantip;
-        int desc; boolean op;
-        try{
-            //idpersonal = aO.listar(cboidpersonal.getSelectedItem().toString());
-            cantip=Double.parseDouble(txtcantidad1.getText());
-            desc=Integer.parseInt( txtdescuento.getText());
-            det=new DPersonal( cantip, desc);
-            op=adp.crearDetalle(det);
-            limpiarComponentes10();
-            if(op){
-                JOptionPane.showMessageDialog(null, "Registro Guardado");
-                LimpiarJTable();
-                cargarTabla();
-            }else{
-                JOptionPane.showMessageDialog(null, "Registro no Guardado");
-            }
-        } catch (NumberFormatException | HeadlessException e) {
-            JOptionPane.showMessageDialog(null, "Ingresar datos");
-
-        }
+       
 
     }//GEN-LAST:event_btnagregarActionPerformed
 
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
         // TODO add your handling code here:
 
-        if(tblista.getSelectedRow()>=0){
-            int fila = tblista.getSelectedRow();
-            int id = (int) tblista.getValueAt(fila, 1);
-            boolean op = adp.eliminarDetalle(id);
-            if(op){
-                JOptionPane.showMessageDialog(null, "Registro Eliminado");
-                LimpiarJTable();
-                cargarTabla();
-            }else{
-                JOptionPane.showMessageDialog(null, "Registro no Eliminado");
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Seleccionar Registro");
-        }
-
+       
     }//GEN-LAST:event_btneliminarActionPerformed
 
     private void btnnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevoActionPerformed
         // TODO add your handling code here:
-        limpiarComponentes10();
+     
     }//GEN-LAST:event_btnnuevoActionPerformed
 
 

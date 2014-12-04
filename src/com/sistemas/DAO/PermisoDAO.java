@@ -40,9 +40,12 @@ private Connection cx = null;
                 permiso.setIdinter(rs.getInt("idINTERNO"));
                 permiso.setIdperson(rs.getInt("idPERSONAL"));
                 permiso.setFechasalida(rs.getString("FECHA_SALIDA"));
-                permiso.setTipopermiso(rs.getString("Tipo"));
+                permiso.setHorasalida(rs.getString("HORA_SALIDA"));
+                 permiso.setFecharetorno(rs.getString("FECHA_RETORNO"));
+                permiso.setHoraretorno(rs.getString("HORA_RETORNO"));
+                permiso.setTipopermiso(rs.getString("TIPO"));
                 permiso.setLugar(rs.getString("LUGAR"));
-                permiso.setFecharetorno(rs.getString("FECHA_RETORNO"));
+               
               
                 lista.add(permiso);
             }            
@@ -64,14 +67,15 @@ private Connection cx = null;
             while(rs.next()){
                 Permiso permiso=new Permiso();
                 permiso.setIdperm(rs.getInt("idPERMISO"));
-                permiso.setIdperm(rs.getInt("idPADRE"));
-                permiso.setIdpad(rs.getInt("idINTERNO"));
-                permiso.setIdinter(rs.getInt("idPERSONAL"));
+                permiso.setIdpad(rs.getInt("idPADRE"));
+                permiso.setIdinter(rs.getInt("idINTERNO"));
+                permiso.setIdperson(rs.getInt("idPERSONAL"));
                 permiso.setFechasalida(rs.getString("FECHA_SALIDA"));
-                permiso.setTipopermiso(rs.getString("Tipo"));
+                permiso.setHorasalida(rs.getString("HORA_SALIDA"));
+                 permiso.setFecharetorno(rs.getString("FECHA_RETORNO"));
+                permiso.setHoraretorno(rs.getString("HORA_RETORNO"));
+                permiso.setTipopermiso(rs.getString("TIPO"));
                 permiso.setLugar(rs.getString("LUGAR"));
-                permiso.setFecharetorno(rs.getString("FECHA_RETORNO"));
-               
                 lista.add(permiso);
             }
             
@@ -85,10 +89,19 @@ private Connection cx = null;
 
     @Override
     public int crearPermiso(Permiso p) {
-        
+        JOptionPane.showMessageDialog(null, "Guardar: "+p.getFechasalida());
         
        int op=0;
-        sql="INSERT INTO permiso(idPERMISO,idPADRE,idINTERNO,idPERSONAL,FECHA_SALIDA,TIPO,LUGAR,FECHA_RETORNO) VALUES(null,"+p.getIdperm()+" ,"+p.getIdpad()+","+p.getIdinter()+","+p.getIdperson()+",'"+p.getFechasalida()+"','"+p.getTipopermiso()+"','"+p.getLugar()+"','" +p.getFecharetorno()+"')";
+        sql="INSERT INTO permiso(idPERMISO,idPADRE,idINTERNO,idPERSONAL,FECHA_SALIDA,HORA_SALIDA,FECHA_RETORNO,HORA_RETORNO,TIPO,LUGAR) VALUES(null,"
+                +p.getIdpad()+","
+                +p.getIdinter()+","
+                +p.getIdperson()+",'"
+                +p.getFechasalida()+"','"
+                +p.getHorasalida()+"','"
+                +p.getFecharetorno()+"','"
+                +p.getHoraretorno()+"','"
+                +p.getTipopermiso()+"','"
+                +p.getLugar()+"')";
                System.out.println(sql);
         try {
             cx = Conexion.getConex();
@@ -96,7 +109,7 @@ private Connection cx = null;
             op=  st.executeUpdate(sql);
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
+            JOptionPane.showMessageDialog(null, "Guardar: "+ex);
         }
        return op;
            /*  

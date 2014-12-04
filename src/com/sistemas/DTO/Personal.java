@@ -14,14 +14,14 @@ public class Personal {
     private int idpersonal;
     private String nombre;
     private String apellido;
-    private int codigo;
+    private String codigo;
     private String email;
     private String cargo;
 
     public Personal() {
     }
 
-    public Personal(int idpersonal, String nombre, String apellido, int codigo, String email, String cargo) {
+    public Personal(int idpersonal, String nombre, String apellido, String codigo, String email, String cargo) {
         this.idpersonal = idpersonal;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -54,11 +54,11 @@ public class Personal {
         this.apellido = apellido;
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
@@ -78,5 +78,6 @@ public class Personal {
         this.cargo = cargo;
     }
     
-    
 }
+
+    
